@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+</head>
+<body>
+    <header>
+    <div class="container">
+        <h1>to-do app</h1>
+        <nav>
+            <a href="{{__url_for('tasks.view_tasks')}}">home</a>
+            {% if 'user' in session %}
+              <a href="{{__url_for('auth.logout')}}">logout</a>
+              {% else %}
+               <a href="{{__url_for('auth.login')}}">login</a>
+        </nav>
+    </div>
+    </header>
+</body>
+</html>
