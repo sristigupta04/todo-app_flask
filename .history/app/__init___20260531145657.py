@@ -4,9 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 
+
 db = SQLAlchemy()
 Login_Manager = LoginManager()
 
+
+@Login_Manager.user_loader
+def load_user(user_id):
+    return Task.query.get(int(user_id))
 
 
 def create_app():
@@ -34,8 +39,3 @@ def create_app():
     
     return app
 
-
-@Login_Manager.user_loader
-def load_user(user_id):
-    from app.models import User
-    return User.query.get(int(user_id))

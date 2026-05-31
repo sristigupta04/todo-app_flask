@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}
- Tasks 
+{% block title %} Tasks 
 {% endblock %}
 
 
@@ -10,14 +9,14 @@
 {% block content %}
 <div class="task-box">
     <h2>your task </h2>
-    <form action="{{url_for('tasks.add_task')}}" method="post" class="task_form">
+    <form action="{{url_for('tasks.add_tasks')}}" method="post" class="task_form">
 
  
-       <input type="text" placeholder="New task"  name="title"></div>
+       <input type="text" placeholder="New task" required></div>
        <button type="submit" class="btn">ADD</button>
 
     </form>
-     {% if tasks %}<form method="POST" action="{{url_for('tasks.clear_tasks')}}">
+      % if tasks %<form method="POST" action="{{url_for('tasks.clear_tasks')}}">
         <button type="submit" class="btn btn-clear">clear All </button>
       </form>
       <br>
@@ -32,19 +31,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for task in tasks %}
+            { % for task in tasks %}
             <tr>
                 <td>
                     {{loop.index}}
                 </td>
                 <td>
-                    {{task.title}}
-                </td>
-                <td> 
-                    <span class="badge {{task.Status | lower}}">{{task.status  | lower}}</span>
+                    {{loop.title}}
                 </td>
                 <td>
-                    <form action="{{url_for('task.toggle',task_id= task.id)}}" method="POST">
+                    <span class="badge {{task.Status | lower}}">{{task.status }}</span>
+                </td>
+                <td>
+                    <form action="{{url_for('task.toggle_status',task_id= task.id)}}" method="POST">
                         <button class="btn-small" type="submit">next</button>
                     </form>
                 </td>
@@ -52,8 +51,10 @@
             {% endfor %}
         </tbody>
       </table>
-      {% else %}
+      { % else %}
       <p> no task yet .add one above </p>
-      {% endif %}
+      { % endif %}
 </div>
-{% endblock %}
+{ % endblock %}
+
+{ % endblock %}

@@ -2,11 +2,16 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 # create database object globally
 from flask_login import LoginManager
+from app.models import User
 
 
 db = SQLAlchemy()
 Login_Manager = LoginManager()
 
+
+@Login_Manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 def create_app():
@@ -34,8 +39,3 @@ def create_app():
     
     return app
 
-
-@Login_Manager.user_loader
-def load_user(user_id):
-    from app.models import User
-    return User.query.get(int(user_id))

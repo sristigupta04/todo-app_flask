@@ -13,7 +13,7 @@
     <form action="{{url_for('tasks.add_task')}}" method="post" class="task_form">
 
  
-       <input type="text" placeholder="New task"  name="title"></div>
+       <input type="text" placeholder="New task" required></div>
        <button type="submit" class="btn">ADD</button>
 
     </form>
@@ -40,11 +40,11 @@
                 <td>
                     {{task.title}}
                 </td>
-                <td> 
-                    <span class="badge {{task.Status | lower}}">{{task.status  | lower}}</span>
+                <td>
+                    <span class="badge {{task.Status | lower}}">{{task.status }}</span>
                 </td>
                 <td>
-                    <form action="{{url_for('task.toggle',task_id= task.id)}}" method="POST">
+                    <form action="{{url_for('task.toggle_status',task_id= task.id)}}" method="POST">
                         <button class="btn-small" type="submit">next</button>
                     </form>
                 </td>

@@ -2,7 +2,6 @@ from flask import Blueprint,render_template,request,redirect,url_for,flash,sessi
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from app.models import User
-from app.models import db
 auth_bp =Blueprint('auth',__name__)
 
 
@@ -12,9 +11,9 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         user = User.query.filter_by(username= username).first()
-        if user and check_password_hash(user.password,password):
-            session['user']= username
-            flash('login successful','success')
+    if user and check_password_hash(user.password,password):
+        session['user']= username
+        flash('login successful','success')
         return redirect(url_for('tasks.view_tasks'))
     flash("inavild username or passsword ",'danger')
     return render_template('login.html')
