@@ -59,25 +59,6 @@ def toggle(task_id):
     return redirect(url_for('tasks.view_tasks'))
 
 
-@tasks_bp.route('/edit/<int:task_id>', methods=['GET', 'POST'])
-def edit_task(task_id):
-
-    task = Task.query.get_or_404(task_id)
-
-    if request.method == 'POST':
-
-        title = request.form.get('title')
-
-        if title:
-            task.title = title
-            db.session.commit()
-
-            flash('Task updated successfully', 'success')
-
-            return redirect(url_for('tasks.view_tasks'))
-
-    return render_template('edit_task.html', task=task)
-
 @tasks_bp.route('/clear', methods=['POST'])
 def clear_task():
 

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Task
+{% endblock %}
+
+{% block content %}
+
+<div class="login-box">
+
+    <h2>Edit Task</h2>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label>Task Title</label>
+
+            <input
+                type="text"
+                name="title"
+                value="{{ task.title }}"
+                required>
+        </div>
+
+        <button type="submit" class="btn">
+            Update Task
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
