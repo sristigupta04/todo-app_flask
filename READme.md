@@ -73,7 +73,10 @@ python run.py
 
 http://127.0.0.1:5000
 
+##screenshots
+<img width="1843" height="947" alt="image" src="https://github.com/user-attachments/assets/13e0a3bf-a7f8-4501-a4ef-e6100fccd3c2" />
 
+<img width="1778" height="929" alt="image" src="https://github.com/user-attachments/assets/0b3fd565-ac6a-456c-a162-d2e80b78835f" />
 
 ## 🎯 Future Improvements
 
